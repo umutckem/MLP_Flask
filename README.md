@@ -65,3 +65,8 @@ Varsayılan olarak uygulama `http://127.0.0.1:5000/` adresinde çalışacaktır.
 - `ModuleNotFoundError` veya eksik paket hatası alırsanız gereken paketleri yükleyin.
 - `FileNotFoundError: model.pkl` hatası alırsanız model dosyasının proje kökünde olduğundan emin olun.
 - Modelin beklediği özellik sırası ile `app.py` içindeki giriş sırasının uyumlu olması önemlidir.
+
+
+# Ekran Görüntüsü index.html
+
+<img width="1898" height="901" alt="Ekran görüntüsü 2025-12-07 194131" src="https://github.com/user-attachments/assets/a97c6aa0-de22-4242-9912-c50233bb2111" />
