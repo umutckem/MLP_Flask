@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <title>Öğrenci Performans Tahmini</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        /* Genel Stil ve Yazı Tipi Güncellemesi */
+        body {
+            font-family: 'Poppins', sans-serif; /* Yeni yazı tipi */
+            background: linear-gradient(135deg, #4f8df5 0%, #6ec6e1 100%);
+            min-height: 100vh; /* height yerine min-height daha esnek */
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px; /* Küçük ekranlar için dolgu */
+        }
+
+        /* Konteyner Görünümü */
+        .container {
+            background: #ffffff; /* Saf beyaz */
+            padding: 35px 45px;
+            border-radius: 16px; /* Daha yuvarlak köşeler */
+            box-shadow: 0px 10px 30px rgba(0,0,0,0.15); /* Daha zarif gölge */
+            width: 100%;
+            max-width: 450px; /* Maksimum genişlik belirlendi */
+            text-align: center;
+            animation: fadeIn 0.8s ease-in-out;
+            border: 1px solid #f0f0f0; /* Hafif bir çerçeve */
+        }
+
+        h2 {
+            margin-bottom: 25px;
+            color: #1a1a1a;
+            font-weight: 600; /* Daha belirgin başlık */
+            border-bottom: 2px solid #e0eaff; /* Altına ince bir çizgi */
+            padding-bottom: 10px;
+        }
+
+        /* Form Gruplama */
+        .form-group {
+            margin-bottom: 20px;
+            text-align: left;
+        }
+
+        label {
+            display: block; /* Etiketi tam satır kaplayacak şekilde ayarlama */
+            font-weight: 600; /* Daha kalın etiket */
+            margin-bottom: 8px;
+            color: #333;
+            font-size: 0.95em;
+        }
+
+        input {
+            width: calc(100% - 20px); /* Padding'i hesaba katmak için */
+            padding: 10px;
+            border-radius: 8px; /* Daha yuvarlak kenarlar */
+            border: 1px solid #ddd;
+            transition: border-color 0.3s, box-shadow 0.3s;
+            background-color: #fafafa; /* Hafif arka plan */
+        }
+
+        input:focus {
+            border-color: #4f8df5;
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(79, 141, 245, 0.2); /* Daha modern focus efekti */
+            background-color: #fff;
+        }
+
+        /* Buton Stili */
+        button {
+            width: 100%;
+            padding: 14px;
+            background-color: #4f8df5;
+            border: none;
+            color: white;
+            font-size: 1.1em;
+            font-weight: 600;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.2s;
+            margin-top: 10px;
+            letter-spacing: 0.5px;
+        }
+
+        button:hover {
+            background-color: #3c75d1;
+            transform: translateY(-2px); /* Hafif bir yükselme efekti */
+            box-shadow: 0 4px 10px rgba(79, 141, 245, 0.4);
+        }
+        
+        button:active {
+            transform: translateY(0);
+        }
+
+        /* Sonuç Alanı */
+        .result {
+            margin-top: 25px;
+            padding: 15px;
+            background: #e6f7ff; /* Açık mavi tonu */
+            border-left: 5px solid #007bff; /* Daha belirgin sol çizgi */
+            border-radius: 8px;
+            font-size: 1.1em;
+            font-weight: 500;
+            color: #004085;
+            animation: slideIn 0.5s ease-out;
+        }
+
+        /* Animasyonlar */
+        @keyframes fadeIn {
+            from {opacity: 0; transform: translateY(-20px);}
+            to {opacity: 1; transform: translateY(0);}
+        }
+
+        @keyframes slideIn {
+            from {opacity: 0; transform: translateX(-10px);}
+            to {opacity: 1; transform: translateX(0);}
+        }
+
+        /* Ekstraküriküler alanı için özel iyileştirme (min/max değerleri gösterilebilir) */
+        input[name="Extracurricular Activities"] {
+            text-align: center;
+        }
+        
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h2>📊 Öğrenci Performans Tahmini</h2>
+
+        <form action="/predict" method="POST">
+
+            <div class="form-group">
+                <label for="hours_studied">Çalışılan Saat:</label>
+                <input type="number" step="any" name="Hours Studied" id="hours_studied" placeholder="Örn: 5.5" required>
+            </div>
+
+            <div class="form-group">
+                <label for="prev_scores">Önceki Not Ortalaması:</label>
+                <input type="number" step="any" name="Previous Scores" id="prev_scores" placeholder="Örn: 85.0" required>
+            </div>
+
+            <div class="form-group">
+                <label for="extracurricular">Ekstraküriküler Etkinlik (Var=1 / Yok=0):</label>
+                <input type="number" min="0" max="1" name="Extracurricular Activities" id="extracurricular" placeholder="0 veya 1 girin" required>
+            </div>
+
+            <div class="form-group">
+                <label for="sleep_hours">Uyku Süresi (Saat):</label>
+                <input type="number" step="any" name="Sleep Hours" id="sleep_hours" placeholder="Örn: 7.5" required>
+            </div>
+
+            <div class="form-group">
+                <label for="sample_papers">Çözülen Örnek Soru Sayısı:</label>
+                <input type="number" step="any" name="Sample Question Papers Practiced" id="sample_papers" placeholder="Örn: 15" required>
+            </div>
+
+            <button type="submit">Tahmini Notu Hesapla</button>
+        </form>
+
+        {% if result %}
+            <div class="result">
+                {{ result }}
+            </div>
+        {% endif %}
+    </div>
+</body>
+</html>
