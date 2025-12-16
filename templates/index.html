@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <title>Sigorta Ücreti Tahmini</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f6f8;
+        }
+        .container {
+            width: 400px;
+            margin: 50px auto;
+            background: white;
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        h2 {
+            text-align: center;
+        }
+        label {
+            margin-top: 10px;
+            display: block;
+        }
+        input, select, button {
+            width: 100%;
+            padding: 8px;
+            margin-top: 5px;
+        }
+        button {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            margin-top: 15px;
+            cursor: pointer;
+        }
+        .result {
+            margin-top: 20px;
+            text-align: center;
+            font-weight: bold;
+            color: green;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h2>Sigorta Ücreti Tahmini</h2>
+
+    <form method="POST">
+        <label>Yaş</label>
+        <input type="number" name="age" required>
+
+        <label>BMI</label>
+        <input type="number" step="0.1" name="bmi" required>
+
+        <label>Çocuk Sayısı</label>
+        <input type="number" name="children" required>
+
+        <label>Cinsiyet</label>
+        <select name="sex">
+            <option value="male">Erkek</option>
+            <option value="female">Kadın</option>
+        </select>
+
+        <label>Sigara Kullanımı</label>
+        <select name="smoker">
+            <option value="yes">Evet</option>
+            <option value="no">Hayır</option>
+        </select>
+
+        <label>Bölge</label>
+        <select name="region">
+            <option value="southwest">Southwest</option>
+            <option value="southeast">Southeast</option>
+            <option value="northwest">Northwest</option>
+            <option value="northeast">Northeast</option>
+        </select>
+
+        <button type="submit">Tahmin Et</button>
+    </form>
+
+    {% if prediction %}
+    <div class="result">
+        Tahmini Sigorta Ücreti: {{ prediction | round(2) }} $
+    </div>
+    {% endif %}
+</div>
+
+</body>
+</html>
