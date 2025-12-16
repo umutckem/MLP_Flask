@@ -83,6 +83,15 @@ Web arayüzü üzerinden:
 
 ---
 
+## Proje Görselleri
+
+<img width="1916" height="911" alt="Ekran görüntüsü 2025-12-16 122916" src="https://github.com/user-attachments/assets/4e1de823-35ba-41aa-9f6a-4328233ef9c4" />
+
+<img width="1919" height="907" alt="Ekran görüntüsü 2025-12-16 122923" src="https://github.com/user-attachments/assets/f5433b17-3de9-4a99-b058-774457f6e345" />
+
+
+---
+
 ## 📁 Proje Dosya Yapısı
 
 ```text
@@ -101,8 +110,3 @@ MLP_Flask/
 └── README.md
 
 
-## Poje Görselleri
-
-<img width="1916" height="911" alt="Ekran görüntüsü 2025-12-16 122916" src="https://github.com/user-attachments/assets/06f5c13e-2f34-47ce-857e-9574ecea625a" />
-
-<img width="1919" height="907" alt="Ekran görüntüsü 2025-12-16 122923" src="https://github.com/user-attachments/assets/43c6da84-edde-44dd-95f2-a865f7490e62" />
