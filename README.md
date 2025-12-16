@@ -36,7 +36,6 @@ Veri seti, bireylerin demografik ve sağlık bilgilerine göre sigorta maliyetle
 Modelde kullanılacak öznitelikler seçilmiş, gereksiz ve modele katkı sağlamayan değişkenler veri setinden çıkarılmıştır. Toplam öznitelik sayısı maksimum 10 olacak şekilde sınırlandırılmıştır.
 
 ### 🔹 Kayıp Veri Analizi
-Veri setinde başlangıçta eksik değer bulunmadığından, gerçek hayat senaryosunu simüle etmek amacıyla rastgele seçilen 20 hücrede eksik veri oluşturulmuştur.
 
 - Sayısal değişkenlerde eksik değerler **medyan (median)** yöntemi ile doldurulmuştur.
 - Kategorik değişkenlerde eksik değerler **mod (mode)** yöntemi ile doldurulmuştur.
